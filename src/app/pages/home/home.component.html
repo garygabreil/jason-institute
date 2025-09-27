@@ -1,0 +1,369 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <i class="fas fa-graduation-cap me-2"></i>Jason Institute of Technology &
+      Learning
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="#home">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#courses">Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Why Us?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+  <div class="container">
+    <h1 class="display-4 mb-4">Advance Your Tech Career</h1>
+    <p class="lead mb-4">
+      Comprehensive technology training programs designed for working
+      professionals and career changers
+    </p>
+    <a href="#courses" class="btn btn-outline-primary btn-white"
+      >Explore Our Courses</a
+    >
+  </div>
+</section>
+
+<!-- Courses Section -->
+<section id="courses" class="py-5">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col text-center">
+        <h2 class="section-title">Our Technology Courses</h2>
+        <p class="section-subtitle">
+          Choose from our wide range of technology programs
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div
+        *ngFor="let course of courses; let i = index"
+        class="col-md-6 col-lg-4 mb-4"
+      >
+        <div class="card course-card">
+          <div class="card-body text-center">
+            <div class="course-icon">
+              <i [class]="course.icon"></i>
+            </div>
+            <h4 class="card-title">{{ course.title }}</h4>
+            <span class="badge badge-custom mb-3"
+              >Duration: {{ course.duration }}</span
+            >
+            <p class="card-text">
+              {{ course.description }}
+            </p>
+
+            <button
+              class="btn btn-outline-primary btn-sm mt-2 syllabus-btn"
+              type="button"
+              [attr.data-bs-toggle]="'collapse'"
+              [attr.data-bs-target]="'#' + getSyllabusId(course.id)"
+              [attr.aria-expanded]="'false'"
+              [attr.aria-controls]="getSyllabusId(course.id)"
+            >
+              <i class="fas fa-book me-1"></i>View Syllabus
+            </button>
+
+            <div class="collapse mt-3" [id]="getSyllabusId(course.id)">
+              <div class="syllabus-list">
+                <div class="syllabus-header" style="color: black">
+                  <span
+                    ><i class="fas fa-list-check me-2" style="color: black"></i
+                    >Course Syllabus</span
+                  >
+                  <span class="badge bg-light text-dark"
+                    >{{ course.syllabus.length }} Topics</span
+                  >
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li
+                    *ngFor="let item of course.syllabus; let j = index"
+                    class="list-group-item syllabus-item with-icon animated"
+                    [style.animation-delay]="j * 0.1 + 's'"
+                  >
+                    {{ item }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-5 bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col text-center">
+        <h2 class="section-title">Why Choose Our Institute?</h2>
+        <p class="section-subtitle">
+          Discover what makes us the preferred choice for technology education
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card text-center p-4 h-100">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-calendar-alt fa-3x"></i>
+          </div>
+          <h4 class="fw-bold mb-3">Weekend Training</h4>
+          <p class="text-muted">
+            All our courses are scheduled on weekends to accommodate working
+            professionals and students. Flexible timing options available.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card text-center p-4 h-100">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-user-graduate fa-3x"></i>
+          </div>
+          <h4 class="fw-bold mb-3">1:1 Personalized Training</h4>
+          <p class="text-muted">
+            Get dedicated instructor attention with customized learning paths
+            for accelerated skill development.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <div class="feature-card text-center p-4 h-100">
+          <div class="feature-icon mb-4">
+            <i class="fas fa-briefcase fa-3x"></i>
+          </div>
+          <h4 class="fw-bold mb-3">Career Support</h4>
+          <p class="text-muted">
+            Comprehensive interview preparation including resume building, mock
+            interviews, and technical guidance.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional Benefits Section -->
+    <div class="row mt-5">
+      <div class="col-lg-8 mx-auto">
+        <div class="benefits-section p-5 rounded-4">
+          <h3 class="text-center mb-4 fw-bold">Additional Benefits</h3>
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="benefit-item d-flex align-items-start">
+                <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                <div>
+                  <h6 class="fw-bold">Industry-Expert Instructors</h6>
+                  <p class="text-muted small">
+                    Learn from professionals with real-world project experience
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="benefit-item d-flex align-items-start">
+                <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                <div>
+                  <h6 class="fw-bold">Hands-on Projects</h6>
+                  <p class="text-muted small">
+                    Practical learning through real-world projects and
+                    assignments
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="benefit-item d-flex align-items-start">
+                <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                <div>
+                  <h6 class="fw-bold">Lifetime Access</h6>
+                  <p class="text-muted small">
+                    Continuous access to updated course materials and resources
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="benefit-item d-flex align-items-start">
+                <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                <div>
+                  <h6 class="fw-bold">Flexible Payments</h6>
+                  <p class="text-muted small">
+                    Multiple payment options and installment plans available
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="benefit-item d-flex align-items-start">
+                <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                <div>
+                  <h6 class="fw-bold">Industry Recognition</h6>
+                  <p class="text-muted small">
+                    Certificates recognized by leading industry partners
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="benefit-item d-flex align-items-start">
+                <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                <div>
+                  <h6 class="fw-bold">Small Batch Sizes</h6>
+                  <p class="text-muted small">
+                    Personalized attention in small, focused learning groups
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="text-center mb-5">Contact Us</h2>
+
+        <!-- Contact Information -->
+        <div class="contact-info mb-5">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-start">
+                <i
+                  class="fas fa-map-marker-alt fa-lg text-success mt-1 me-3"
+                ></i>
+                <div>
+                  <h5>Address</h5>
+                  <p class="mb-0">
+                    #T1, Vandalore Park Residency,<br />Urapakkam-603210
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-start">
+                <i class="fas fa-phone fa-lg text-success mt-1 me-3"></i>
+                <div>
+                  <h5>Phone</h5>
+                  <p class="mb-0">+91-9791461913</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-start">
+                <i class="fas fa-envelope fa-lg text-success mt-1 me-3"></i>
+                <div>
+                  <h5>Email</h5>
+                  <p class="mb-0">
+                    <a href="mailto:contactusjasoninstitute@gmail.com"
+                      >contactusjasoninstitute&#64;gmail.com</a
+                    >
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="d-flex align-items-start">
+                <i class="fas fa-clock fa-lg text-success mt-1 me-3"></i>
+                <div>
+                  <h5>Office Hours</h5>
+                  <p class="mb-0">Monday - Saturday<br />9:00 AM - 6:00 PM</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp Contact Section -->
+        <div class="whatsapp-contact text-center bg-light p-5 rounded-3">
+          <i class="fab fa-whatsapp fa-3x text-success mb-3"></i>
+          <h3 class="mb-3">Contact via WhatsApp</h3>
+          <p class="lead mb-4">
+            Click below to message us directly on WhatsApp for quick assistance
+          </p>
+
+          <a
+            href="https://wa.me/919791461913?text=Hello%20Jason%20Institute%20of%20Technology%20%26%20Learning%2C%0A%0AI%20am%20interested%20in%20your%20courses%20and%20would%20like%20more%20information%20about%3A%0A-%20Course%20details%0A-%20Fee%20structure%0A-%20Batch%20timings%0A-%20Weekend%20classes%0A%0AName%3A%20%0APreferred%20Course%3A%20"
+            class="btn btn-success btn-lg whatsapp-btn px-4 py-3"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fab fa-whatsapp me-2"></i>Message on WhatsApp
+          </a>
+
+          <div class="mt-3">
+            <small class="text-muted"
+              >We typically respond within 30 minutes during business
+              hours</small
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer bg-dark text-white py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Jason Institute of Technology & Learning</h5>
+        <p>
+          Empowering individuals with cutting-edge technology skills for
+          successful careers.
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#home" class="text-white">Home</a></li>
+          <li><a href="#courses" class="text-white">Courses</a></li>
+          <li><a href="#features" class="text-white">Features</a></li>
+          <li><a href="#contact" class="text-white">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="bg-white" />
+    <div class="row">
+      <div class="col text-center">
+        <p>
+          &copy; 2024 Jason Institute of Technology & Learning. All rights
+          reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
