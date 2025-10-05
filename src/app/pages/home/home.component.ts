@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  constructor(private router: Router) {}
+
   courses: any[] = [
     {
       id: 'javaCore',
@@ -157,5 +160,21 @@ export class HomeComponent {
 
   getButtonId(courseId: string): string {
     return courseId + 'Button';
+  }
+
+  routeToPP() {
+    this.router.navigate(['/privacy-policy']);
+  }
+
+  routeToTC() {
+    this.router.navigate(['/terms-conditions']);
+  }
+
+  routeToCR() {
+    this.router.navigate(['/cancellation-refund']);
+  }
+
+  routeToSD() {
+    this.router.navigate(['/shipping-delivery']);
   }
 }

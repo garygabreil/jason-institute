@@ -1,0 +1,133 @@
+/* Privacy Policy Card Styles */
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.card-header.bg-primary {
+  background: linear-gradient(135deg, #0d6efd, #0a58ca) !important;
+}
+
+.bg-primary.bg-opacity-10 {
+  background-color: rgba(13, 110, 253, 0.1) !important;
+}
+
+/* Hover effects for interactive cards */
+.card.h-100:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Smooth animations */
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section spacing */
+section {
+  padding: 2rem 0;
+}
+
+section:not(:last-child) {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 3rem;
+}
+
+/* Button styles */
+.btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Alert customization */
+.alert {
+  border: none;
+  border-radius: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 1.5rem !important;
+  }
+
+  .display-4 {
+    font-size: 2rem;
+  }
+
+  .d-flex.align-items-center {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bg-primary.bg-opacity-10 {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .bg-light {
+    background: white !important;
+  }
+
+  .card {
+    border: 1px solid #dee2e6 !important;
+    box-shadow: none !important;
+  }
+
+  .btn {
+    display: none !important;
+  }
+
+  .text-primary {
+    color: #000 !important;
+  }
+}
+
+/* Custom shadow utilities */
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+/* Border radius utilities */
+.rounded-3 {
+  border-radius: 0.75rem !important;
+}
+
+.rounded-top-3 {
+  border-top-left-radius: 0.75rem !important;
+  border-top-right-radius: 0.75rem !important;
+}
+
+.rounded-bottom-3 {
+  border-bottom-left-radius: 0.75rem !important;
+  border-bottom-right-radius: 0.75rem !important;
+}
